@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Menu from "./components/Menu";
+import Inicio from "./components/Inicio";
+import Hobbies from "./components/Hobbies";
+import Contacto from "./components/Contacto";
+import AcercaDe from "./components/AcercaDe";
+import Footer from "./components/Footer";
+import Error404 from "./components/Error404";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Menu />
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/hobbies" element={<Hobbies />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/acercaDe" element={<AcercaDe />} />
+
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
